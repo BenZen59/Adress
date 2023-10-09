@@ -1,7 +1,7 @@
 
 £
-java:S1186&"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ËìÀùıÿÿÿÿ8Şİ°œ±1
+java:S1186'"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ËìÀùıÿÿÿÿ8”¶±1
 x
-java:S1450 "VRemove the "mainApp" field and declare it as a local variable in the relevant methods.(µåıûÿÿÿÿ8ßİ°œ±1
+java:S1450!"VRemove the "mainApp" field and declare it as a local variable in the relevant methods.(µåıûÿÿÿÿ8•¶±1
 M
-java:S1068 "+Remove this unused "mainApp" private field.(µåıûÿÿÿÿ8áİ°œ±1
+java:S1068!"+Remove this unused "mainApp" private field.(µåıûÿÿÿÿ8š¶±1
