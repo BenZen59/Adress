@@ -33,17 +33,10 @@ public class PersonOverviewController {
     // Reference to the main application.
     private MainApp mainApp;
 
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
     public PersonOverviewController() {
     }
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
+
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
@@ -55,11 +48,6 @@ public class PersonOverviewController {
         personTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
 
     @FXML
     private void handleDeletePerson() {
@@ -97,10 +85,7 @@ public class PersonOverviewController {
         }
     }
 
-    /**
-     * Called when the user clicks the new button. Opens a dialog to edit
-     * details for a new person.
-     */
+
     @FXML
     private void handleNewPerson() {
         Person tempPerson = new Person();
@@ -110,10 +95,6 @@ public class PersonOverviewController {
         }
     }
 
-    /**
-     * Called when the user clicks the edit button. Opens a dialog to edit
-     * details for the selected person.
-     */
     @FXML
     private void handleEditPerson() {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();

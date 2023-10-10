@@ -51,7 +51,7 @@
                                 <Label styleClass="left-container" text="City" GridPane.rowIndex="3" />
                                 <Label styleClass="left-container" text="Postal Code" GridPane.rowIndex="4" />
                                 <Label styleClass="left-container" text="Birthday" GridPane.rowIndex="5" />
-                                <Label fx:id="firstNameLabel" text="Label" GridPane.columnIndex="1" />
+                                <Label fx:id="firstNameLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
                                 <Label fx:id="lastNameLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <Label fx:id="streetLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Label fx:id="cityLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />

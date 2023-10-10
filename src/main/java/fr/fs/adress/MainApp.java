@@ -20,16 +20,10 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-// ... AFTER THE OTHER VARIABLES ...
 
-    /**
-     * The data as an observable list of Persons.
-     */
+
     private ObservableList<Person> personData = FXCollections.observableArrayList();
 
-    /**
-     * Constructor
-     */
     public MainApp() {
         // Add some sample data
         personData.add(new Person("Hans", "Muster"));
@@ -43,16 +37,10 @@ public class MainApp extends Application {
         personData.add(new Person("Martin", "Mueller"));
     }
 
-    /**
-     * Returns the data as an observable list of Persons.
-     *
-     * @return
-     */
     public ObservableList<Person> getPersonData() {
         return personData;
     }
 
-    // ... THE REST OF THE CLASS ...
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -64,9 +52,6 @@ public class MainApp extends Application {
         showPersonOverview();
     }
 
-    /**
-     * Initializes the root layout.
-     */
     public void initRootLayout() {
         try {
             // Load root layout from fxml file.
@@ -83,9 +68,6 @@ public class MainApp extends Application {
         }
     }
 
-    /**
-     * Shows the person overview inside the root layout.
-     */
     public void showPersonOverview() {
         try {
             // Load person overview.
@@ -103,14 +85,6 @@ public class MainApp extends Application {
         }
     }
 
-    /**
-     * Opens a dialog to edit details for the specified person. If the user
-     * clicks OK, the changes are saved into the provided person object and true
-     * is returned.
-     *
-     * @param person the person object to be edited
-     * @return true if the user clicked OK, false otherwise.
-     */
     public boolean showPersonEditDialog(Person person) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -141,11 +115,6 @@ public class MainApp extends Application {
         }
     }
 
-    /**
-     * Returns the main stage.
-     *
-     * @return
-     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
