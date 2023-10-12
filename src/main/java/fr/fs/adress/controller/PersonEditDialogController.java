@@ -1,4 +1,4 @@
-package fr.fs.adress.view;
+package fr.fs.adress.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

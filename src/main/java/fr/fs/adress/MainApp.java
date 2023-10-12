@@ -3,8 +3,9 @@ package fr.fs.adress;
 import java.io.IOException;
 
 import fr.fs.adress.model.Person;
-import fr.fs.adress.view.PersonEditDialogController;
-import fr.fs.adress.view.PersonOverviewController;
+import fr.fs.adress.controller.PersonEditDialogController;
+import fr.fs.adress.controller.ContactController;
+import fr.fs.adress.service.RepertoireBean;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,25 +21,10 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-
-
+    private RepertoireBean repertoireBean;
     private ObservableList<Person> personData = FXCollections.observableArrayList();
 
     public MainApp() {
-        // Add some sample data
-        personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
-    }
-
-    public ObservableList<Person> getPersonData() {
-        return personData;
     }
 
     @Override
@@ -49,14 +35,13 @@ public class MainApp extends Application {
         this.primaryStage.getIcons().add(new Image("file:src/main/resources/images/addressbook.png"));
         initRootLayout();
 
-        showPersonOverview();
     }
 
     public void initRootLayout() {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/Menu.fxml"));
             rootLayout = (BorderPane) loader.load();
 
             // Show the scene containing the root layout.
@@ -68,20 +53,21 @@ public class MainApp extends Application {
         }
     }
 
-    public void showPersonOverview() {
+    public void showContact() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            loader.setLocation(MainApp.class.getResource("view/Contact.fxml"));
+            AnchorPane contact = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            rootLayout.setCenter(contact);
             // Give the controller access to the main app.
-            PersonOverviewController controller = loader.getController();
+            ContactController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 
@@ -115,8 +101,28 @@ public class MainApp extends Application {
         }
     }
 
+    //Getter
     public Stage getPrimaryStage() {
         return primaryStage;
+    }
+
+    public BorderPane getRootLayout() {
+        return rootLayout;
+    }
+
+    public RepertoireBean getRepertoireBean() {
+        return repertoireBean;
+    }
+
+    public ObservableList<Person> getPersonData() {
+        return personData;
+    }
+
+    //Setter
+
+    public void setRepertoireBean(RepertoireBean repertoireBean) {
+        this.repertoireBean = repertoireBean;
+        showContact();
     }
 
     public static void main(String[] args) {

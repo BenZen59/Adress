@@ -1,4 +1,4 @@
-package fr.fs.adress.view;
+package fr.fs.adress.controller;
 
 import fr.fs.adress.util.DateUtil;
 import javafx.fxml.FXML;
@@ -9,7 +9,7 @@ import javafx.scene.control.TableView;
 import fr.fs.adress.MainApp;
 import fr.fs.adress.model.Person;
 
-public class PersonOverviewController {
+public class ContactController {
     @FXML
     private TableView<Person> personTable;
     @FXML
@@ -33,7 +33,7 @@ public class PersonOverviewController {
     // Reference to the main application.
     private MainApp mainApp;
 
-    public PersonOverviewController() {
+    public ContactController() {
     }
 
 
