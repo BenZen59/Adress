@@ -1,5 +1,6 @@
 package fr.fs.adress.controller;
 
+import fr.fs.adress.dao.FichierTexte;
 import fr.fs.adress.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -8,6 +9,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import fr.fs.adress.MainApp;
 import fr.fs.adress.model.Person;
+
+import java.io.File;
 
 public class ContactController {
     @FXML
@@ -34,6 +37,7 @@ public class ContactController {
     private MainApp mainApp;
 
     public ContactController() {
+
     }
 
 
@@ -121,5 +125,17 @@ public class ContactController {
 
         // Add observable list data to the table
         personTable.setItems(mainApp.getPersonData());
+    }
+
+    public TableView<Person> getPersonTable() {
+        return personTable;
+    }
+
+    public TableColumn<Person, String> getFirstNameColumn() {
+        return firstNameColumn;
+    }
+
+    public TableColumn<Person, String> getLastNameColumn() {
+        return lastNameColumn;
     }
 }

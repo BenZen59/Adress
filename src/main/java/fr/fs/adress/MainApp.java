@@ -20,9 +20,11 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     private Stage primaryStage;
-    private BorderPane rootLayout;
+    private static BorderPane rootLayout;
     private RepertoireBean repertoireBean;
     private ObservableList<Person> personData = FXCollections.observableArrayList();
+
+    private MainApp mainApp;
 
     public MainApp() {
     }
@@ -106,7 +108,7 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-    public BorderPane getRootLayout() {
+    public static BorderPane getRootLayout() {
         return rootLayout;
     }
 
