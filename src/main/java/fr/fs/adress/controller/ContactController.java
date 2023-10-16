@@ -1,141 +1,44 @@
 package fr.fs.adress.controller;
 
-import fr.fs.adress.dao.FichierTexte;
-import fr.fs.adress.util.DateUtil;
+import fr.fs.adress.dao.ContactDAO;
+import fr.fs.adress.model.Person;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import fr.fs.adress.MainApp;
-import fr.fs.adress.model.Person;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 public class ContactController {
     @FXML
-    private TableView<Person> personTable;
+    private TableView<Person> tableView;
     @FXML
     private TableColumn<Person, String> firstNameColumn;
     @FXML
     private TableColumn<Person, String> lastNameColumn;
+    private final ContactDAO contactDAO;
 
-    @FXML
-    private Label firstNameLabel;
-    @FXML
-    private Label lastNameLabel;
-    @FXML
-    private Label streetLabel;
-    @FXML
-    private Label postalCodeLabel;
-    @FXML
-    private Label cityLabel;
-    @FXML
-    private Label birthdayLabel;
-
-    // Reference to the main application.
-    private MainApp mainApp;
 
     public ContactController() {
-
+        contactDAO = new ContactDAO();
     }
-
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
-        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-        // Clear person details.
-        showPersonDetails(null);
-        // Listen for selection changes and show the person details when changed.
-        personTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastname"));
     }
 
-
-    @FXML
-    private void handleDeletePerson() {
-        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            personTable.getItems().remove(selectedIndex);
-        } else {
-            // Nothing selected.
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
-            alert.showAndWait();
-        }
-
-    }
-
-    private void showPersonDetails(Person person) {
-        if (person != null) {
-            firstNameLabel.setText(person.getFirstName());
-            lastNameLabel.setText(person.getLastName());
-            streetLabel.setText(person.getStreet());
-            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
-            cityLabel.setText(person.getCity());
-            birthdayLabel.setText(DateUtil.format(person.getBirthday()));
-        } else {
-            // Person is null, remove all the text.
-            firstNameLabel.setText("");
-            lastNameLabel.setText("");
-            streetLabel.setText("");
-            postalCodeLabel.setText("");
-            cityLabel.setText("");
-            birthdayLabel.setText("");
-        }
-    }
-
-
-    @FXML
-    private void handleNewPerson() {
-        Person tempPerson = new Person();
-        boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
-        if (okClicked) {
-            mainApp.getPersonData().add(tempPerson);
-        }
+    public ContactDAO getContactDAO() {
+        return contactDAO;
     }
 
     @FXML
-    private void handleEditPerson() {
-        Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
-        if (selectedPerson != null) {
-            boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
-            if (okClicked) {
-                showPersonDetails(selectedPerson);
-            }
-
-        } else {
-            // Nothing selected.
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
-
-            alert.showAndWait();
-        }
-    }
-
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-
-        // Add observable list data to the table
-        personTable.setItems(mainApp.getPersonData());
-    }
-
-    public TableView<Person> getPersonTable() {
-        return personTable;
-    }
-
-    public TableColumn<Person, String> getFirstNameColumn() {
-        return firstNameColumn;
-    }
-
-    public TableColumn<Person, String> getLastNameColumn() {
-        return lastNameColumn;
+    void openFile(File selectedFile) throws IOException {
+        List<Person> contacts = contactDAO.loadContacts(selectedFile.getAbsolutePath());
+        tableView.getItems().setAll(contacts);
     }
 }

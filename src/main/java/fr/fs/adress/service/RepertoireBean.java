@@ -7,6 +7,7 @@ import javafx.collections.transformation.SortedList;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepertoireBean {
     private File file;
@@ -15,10 +16,8 @@ public class RepertoireBean {
     private SortedList<Person> sortedList;
     private boolean saved;
     public RepertoireBean(File file) {
-        Person searched = new Person();
+       
         this.file = file;
-        ContactDAO contactDAO = new ContactDAO(file);
-
         saved =true;
     }
 }
