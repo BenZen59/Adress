@@ -12,8 +12,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainApp extends Application {
+    private Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
         try {
             // On charge les contrôleurs
             FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
@@ -28,6 +31,8 @@ public class MainApp extends Application {
             Scene scene = new Scene(menuLayout);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Address App");
+            // Passez la référence primaryStage au MenuController
+            menuController.setPrimaryStage(primaryStage);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
