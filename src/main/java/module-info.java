@@ -5,6 +5,7 @@ module fr.fs.adress {
 
 
     opens fr.fs.adress to javafx.fxml;
+    opens fr.fs.adress.model to javafx.base;
     exports fr.fs.adress;
     exports fr.fs.adress.controller;
     opens fr.fs.adress.controller to javafx.fxml;
