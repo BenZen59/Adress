@@ -12,15 +12,15 @@ public class Person {
     private String street;
     private int postalCode;
     private String city;
-    private ObjectProperty<LocalDate> birthday;
+    private String birthday;
 
-    public Person(String firstname, String lastname) {
+    public Person(String firstname, String lastname, String street, int postalCode, String city, String birthday) {
         this.firstname = firstname;
         this.lastname = lastname;
-        street = "some street";
-        postalCode = 1234;
-        city = "some city";
-        this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+        this.street = street;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.birthday = birthday;
 
     }
 
@@ -64,15 +64,11 @@ public class Person {
         this.city = city;
     }
 
-    public LocalDate getBirthday() {
-        return birthday.get();
-    }
-
-    public ObjectProperty<LocalDate> birthdayProperty() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday.set(birthday);
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 }

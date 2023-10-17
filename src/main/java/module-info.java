@@ -2,6 +2,9 @@ module fr.fs.adress {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires io;
+    requires kernel;
+    requires layout;
 
 
     opens fr.fs.adress to javafx.fxml;

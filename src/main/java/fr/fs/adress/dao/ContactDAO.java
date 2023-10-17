@@ -15,10 +15,14 @@ public class ContactDAO {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                if (parts.length == 2) {
+                if (parts.length == 6) {
                     String firstname = parts[0].trim();
                     String lastname = parts[1].trim();
-                    contacts.add(new Person(firstname, lastname));
+                    String street = parts[2].trim();
+                    int postal = Integer.parseInt(parts[3].trim());
+                    String city = parts[4].trim();
+                    String birthday = parts[5].trim();
+                    contacts.add(new Person(firstname, lastname, street, postal,city,birthday));
                 }
             }
         }
