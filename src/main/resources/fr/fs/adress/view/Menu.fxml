@@ -17,6 +17,9 @@
                         <MenuItem mnemonicParsing="false" text="Nouveau" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="ouvrir" mnemonicParsing="false" onAction="#handleOpen" text="Ouvrir" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Enregister" />
+                  <MenuItem mnemonicParsing="false" text="Enregistrer sous ..." />
                     </items>
                 </Menu>
             </menus>

@@ -1,10 +1,5 @@
 package fr.fs.adress.model;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-
-import java.time.LocalDate;
-
 public class Person {
     private String firstname;
     private String lastname;
@@ -13,8 +8,10 @@ public class Person {
     private int postalCode;
     private String city;
     private String birthday;
-
-    public Person(String firstname, String lastname, String street, int postalCode, String city, String birthday) {
+    public Person(){
+        this(null,null,null,null,null,null);
+    }
+    public Person(String firstname, String lastname, String street, Integer postalCode, String city, String birthday) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.street = street;
@@ -63,6 +60,8 @@ public class Person {
     public void setCity(String city) {
         this.city = city;
     }
+
+
 
     public String getBirthday() {
         return birthday;
