@@ -3,6 +3,8 @@ package fr.fs.adress.controller;
 import fr.fs.adress.MainApp;
 import fr.fs.adress.dao.ContactDAO;
 import fr.fs.adress.model.Person;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -36,6 +38,7 @@ public class ContactController {
 
     private MainApp mainApp;
     private final ContactDAO contactDAO;
+    private ObservableList<Person> personData = FXCollections.observableArrayList();
 
 
     public ContactController() {
@@ -55,9 +58,14 @@ public class ContactController {
     }
 
     @FXML
-    void openFile(File selectedFile) throws IOException {
+    public void openFile(File selectedFile) throws IOException {
         List<Person> contacts = contactDAO.loadContacts(selectedFile.getAbsolutePath());
         tableView.getItems().setAll(contacts);
+    }
+
+    @FXML
+    public void saveFile() {
+
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -71,7 +79,7 @@ public class ContactController {
             firstNameLabel.setText(person.getFirstname());
             lastNameLabel.setText(person.getLastname());
             streetLabel.setText(person.getStreet());
-            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+            postalCodeLabel.setText(person.getPostalCode());
             cityLabel.setText(person.getCity());
             birthdayLabel.setText((person.getBirthday()));
 
@@ -89,13 +97,14 @@ public class ContactController {
 
     @FXML
     private void handleNewPerson() {
+        this.mainApp = new MainApp();
         Person tempPerson = new Person();
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
-            mainApp.getPersonData().add(tempPerson);
+            tableView.getItems().add(tempPerson);
+
         }
     }
-
 
     @FXML
     private void handleEditPerson() {
@@ -105,9 +114,10 @@ public class ContactController {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
                 showPersonDetails(selectedPerson);
-            }
 
+            }
         } else {
+
             // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(mainApp.getPrimaryStage());

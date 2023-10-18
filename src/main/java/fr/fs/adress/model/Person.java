@@ -5,13 +5,13 @@ public class Person {
     private String lastname;
 
     private String street;
-    private int postalCode;
+    private String postalCode;
     private String city;
     private String birthday;
     public Person(){
         this(null,null,null,null,null,null);
     }
-    public Person(String firstname, String lastname, String street, Integer postalCode, String city, String birthday) {
+    public Person(String firstname, String lastname, String street, String postalCode, String city, String birthday) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.street = street;
@@ -45,11 +45,11 @@ public class Person {
         this.street = street;
     }
 
-    public int getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(int postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 

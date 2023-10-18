@@ -19,7 +19,7 @@ public class ContactDAO {
                     String firstname = parts[0].trim();
                     String lastname = parts[1].trim();
                     String street = parts[2].trim();
-                    int postal = Integer.parseInt(parts[3].trim());
+                    String postal = parts[3].trim();
                     String city = parts[4].trim();
                     String birthday = parts[5].trim();
                     contacts.add(new Person(firstname, lastname, street, postal,city,birthday));

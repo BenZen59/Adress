@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -38,6 +39,8 @@ public class MainApp extends Application {
             Scene scene = new Scene(menuLayout);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Address App");
+            primaryStage.getIcons().add(new Image("file:src/main/resources/images/addressbook.png"));
+
             // Passez la référence primaryStage au MenuController
             menuController.setPrimaryStage(primaryStage);
             primaryStage.show();
@@ -76,7 +79,6 @@ public class MainApp extends Application {
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
-
             return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();

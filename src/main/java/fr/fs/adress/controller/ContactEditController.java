@@ -56,7 +56,7 @@ public class ContactEditController {
             person.setFirstname(firstNameField.getText());
             person.setLastname(lastNameField.getText());
             person.setStreet(streetField.getText());
-            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+            person.setPostalCode(postalCodeField.getText());
             person.setCity(cityField.getText());
             person.setBirthday(birthdayField.getText());
 
