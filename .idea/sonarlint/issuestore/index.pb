@@ -17,3 +17,7 @@ N
 ,src/main/java/fr/fs/adress/model/Person.java,a\5\a5f9e18090743e15ef2b8cc92f9e09c2f7b2e134
 p
 @src/main/java/fr/fs/adress/controller/ContactEditController.java,2\1\215f9b0c42f3ad2ea9ac53eb7584c9f62c6982b3
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0

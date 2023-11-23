@@ -12,7 +12,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -49,8 +51,7 @@ public class ContactController {
     private void initialize() {
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-        tableView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showPersonDetails(newValue));
+        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
     public ContactDAO getContactDAO() {
@@ -64,8 +65,14 @@ public class ContactController {
     }
 
     @FXML
-    public void saveFile() {
-
+    public void saveFile(String selectedFile) {
+        /*String data =  "|" + lastname + "|" + street + "|" + postalCode + "|" + city + "|" + birthday;
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile, true))){
+            writer.write(data);
+            writer.newLine();
+        }catch (IOException e){
+            e.printStackTrace();
+        }*/
     }
 
     public void setMainApp(MainApp mainApp) {

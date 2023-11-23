@@ -1,5 +1,6 @@
 package fr.fs.adress.controller;
 
+import fr.fs.adress.model.Person;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,6 +30,8 @@ public class MenuController {
     @FXML
     private MenuItem enregistrerSous;
 
+    private String pathFile;
+
     private Stage primaryStage; //référence au primary Stage
 
     private ContactController contactController;
@@ -49,8 +52,9 @@ public class MenuController {
     private void handleOpen(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
-        fileChooser.setInitialDirectory(new File("C:\\Benku\\Dev\\Java"));
+        fileChooser.setInitialDirectory(new File("C:\\Benku\\Dev\\CDA"));
         File selectedFile = fileChooser.showOpenDialog(new Stage());
+        pathFile = selectedFile.getPath();
 
         if (selectedFile != null) {
             try {
@@ -71,7 +75,7 @@ public class MenuController {
     @FXML
     private void handleSave(ActionEvent event){
         ContactController controller = contactController;
-        controller.saveFile();
+
     }
 
     @FXML
